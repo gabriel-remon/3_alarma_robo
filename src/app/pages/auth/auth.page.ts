@@ -27,6 +27,7 @@ export class AuthPage implements OnInit {
       this.firebaseSvc.login(this.form.value as user).then(res=>{
         
         this.getUserInfo(res.user.uid)
+        this.utilsSvc.saveInLocalStorage('password',{password:this.form.value.password})
 
       }).catch(err=>{
         console.log(err);

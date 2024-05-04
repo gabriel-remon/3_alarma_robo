@@ -1,11 +1,13 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>home</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header titulo="inicio"></app-header>
 
-<ion-content [fullscreen]="true">
-  <ion-button (click)="singOut()">
-    cerrar secion
+<ion-content [fullscreen]="true" >
+
+  <ion-button class="alarma d-flex-center" (click)="alarma()">
+    {{titulo_alarma}}
+  </ion-button>
+
+
+  <ion-button (click)="singOut()" class="d-flex-center"  color="danger" [disabled]="estado_alarma">
+    Cerrar secion
   </ion-button>
 </ion-content>

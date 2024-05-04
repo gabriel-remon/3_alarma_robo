@@ -1,7 +1,18 @@
 <app-header titulo="login"></app-header>
 <ion-content>
 
-
+    
+    <div class="d-flex-center despegarTop">
+        <ion-button (click)="acceso1()" class="boton-custom">
+            acceso 1
+          </ion-button>
+        <ion-button (click)="acceso2()" class="boton-custom">
+            acceso 2
+          </ion-button>
+        <ion-button (click)="acceso3()" class="boton-custom">
+            acceso 3
+          </ion-button>
+    </div>
     <div class="d-flex-center">
 
         <form [formGroup]="form" class="auth-form" (ngSubmit)="submit()" (keypress.enter)="submit()">
@@ -48,18 +59,5 @@
 
         </form>
     </div>
-    <div class="d-flex-center">
-        <p >botones de acceso rapido</p>
-    </div>
-    <div class="d-flex-center">
-        <ion-button (click)="acceso1()" class="boton-custom">
-            usuario 1
-          </ion-button>
-        <ion-button (click)="acceso2()" class="boton-custom">
-            usuario 2
-          </ion-button>
-        <ion-button (click)="acceso3()" class="boton-custom">
-            usuario 3
-          </ion-button>
-    </div>
+    
 </ion-content>
