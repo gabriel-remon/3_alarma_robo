@@ -24,7 +24,7 @@ export class HomePage implements OnInit {
 
 
   audio1 = new Audio("assets/aud/audio1.mp3")
-  audio2 = new Audio("assets/aud/audio2.mp3")
+  audio2 = new Audio("assets/aud/audio10.mp3")
   audio3 = new Audio("assets/aud/audio3.mp3")
   audio4 = new Audio("assets/aud/audio4.mp3")
   audio5 = new Audio("assets/aud/audio5.mp3")
@@ -35,15 +35,6 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  activarAudio(){
-
-    this.audio1.play()
-    this.audio2.play()
-    this.audio3.play()
-    this.audio4.play()
-    this.audio5.play()
   }
 
   async flashActivate() {
@@ -63,7 +54,7 @@ export class HomePage implements OnInit {
    ejex:number;
    ejey:number;
    ejez:number;
-
+  izquierda;
     derechaIzquierda(){
       Motion.addListener('orientation', async event => {
         const umbral = 35; // Puedes ajustar este valor según sea necesario
@@ -85,29 +76,43 @@ export class HomePage implements OnInit {
         }
       
 
-        if(this.ejez-accelerationz>umbral){
+        if((this.ejez-accelerationz)>umbral){
           this.bloqueoDetecion=true;
           this.bloquearDetecionPorSegundos(2);
           this.audio1.play()
-        }else if(this.ejez-accelerationz<-umbral){
+          this.ejex=accelerationx;
+          this.ejey=accelerationy;
+          this.ejez=accelerationz;
+          return
+        }else if((this.ejez-accelerationz)<-umbral){
           this.bloqueoDetecion=true;
           this.bloquearDetecionPorSegundos(2);
-          this.audio2.play()
+          this.audio2.play();
+          this.izquierda='izquierda';
+          this.ejex=accelerationx;
+          this.ejey=accelerationy;
+          this.ejez=accelerationz;
+          return
         }else if(this.ejex-accelerationx>umbral || this.ejex-accelerationx<-umbral){
           this.bloqueoDetecion=true;
           this.bloquearDetecionPorSegundos(5);
           this.flashActivate()
           this.audio3.play()
+          this.ejex=accelerationx;
+          this.ejey=accelerationy;
+          this.ejez=accelerationz;
+          return
         }else if(this.ejey-accelerationy>umbral || this.ejey-accelerationy<-umbral){
           this.bloqueoDetecion=true;
           this.bloquearDetecionPorSegundos(6);
           this.vibrar()
           this.audio4.play()
+          this.ejex=accelerationx;
+          this.ejey=accelerationy;
+          this.ejez=accelerationz;
+          return
         }
-
-        this.ejex=accelerationx;
-        this.ejey=accelerationy;
-        this.ejez=accelerationz;
+        this.izquierda='no';
 
        this.bloqueoDetecion=true;
         this.bloquearDetecionPorSegundos(0.4);

@@ -1,7 +1,20 @@
 .alarma{
-    height: 80%;
-    margin-top: 40px;
+    height: 88%;
+    margin-top: 0px;
     margin-bottom: 40px;
     border-radius: 100%;
-    font-size: 65px;
+    font-size: 60px;
+}
+
+.activado{
+    --background: red;
+    --color: #343434;
+    --border-color: red;
+}
+
+@media screen and (orientation: landscape) {
+    .alarma{
+        height: 78%;
+        font-size: 80px;
+    }
 }

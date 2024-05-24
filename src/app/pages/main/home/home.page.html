@@ -1,13 +1,11 @@
-<app-header titulo="inicio"></app-header>
 
 <ion-content [fullscreen]="true" >
 
-  <ion-button class="alarma d-flex-center" (click)="alarma()">
+  <ion-button class="alarma d-flex-center" (click)="alarma()" [ngClass]="{'activado':estado_alarma}">
     {{titulo_alarma}}
   </ion-button>
 
-
-  <ion-button (click)="singOut()" class="d-flex-center"  color="danger" [disabled]="estado_alarma">
+  <ion-button (click)="singOut()" class="d-flex-center"  color="danger" *ngIf="!estado_alarma">
     Cerrar secion
   </ion-button>
 </ion-content>
